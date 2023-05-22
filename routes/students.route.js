@@ -47,7 +47,7 @@ studentsRoutes.route('/update/:id').put(function (req, res) {
             students.idade = req.body.idade;
             students.plano = req.body.plano;
 
-            students.save().then(business => {
+            students.save().then(students => {
                 res.status(200).json({ 'status': 'success', 'mssg': 'Update complete' });
             })
         }
