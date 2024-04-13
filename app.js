@@ -5,9 +5,13 @@ cors = require('cors'),
 mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://127.0.0.1:27017/mean', { useNewUrlParser: true, useUnifiedTopology: true }).then(
-  () => {console.log('Database is connected') },
-  err => { console.log('Can not connect to the database'+ err)});
+mongoose.connect('mongodb://127.0.0.1:27017/mean', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Database is connected');
+  })
+  .catch((err) => {
+    console.error('Error connecting to database:', err);
+  });
 
 const studentsRoute = require('./routes/students.route');
 var app = express();
