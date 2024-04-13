@@ -8,7 +8,7 @@ studentsRoutes.route('/add').post(function (req, res) {
     let students = new Students(req.body);
     students.save()
         .then(students => {
-            res.status(200).json({ 'status': '200', 'mssg': 'students added successfully' });
+            res.status(200).json({ 'status': '200', 'mssg': 'Estudantes adicionados com sucesso' });
         })
         .catch(err => {
             res.status(409).send({ 'status': '400', 'mssg': 'algo deu errado ao adicionar novo estudante', err });
@@ -26,7 +26,7 @@ studentsRoutes.route('/').get(function (req, res) {
     });
 });
 
-studentsRoutes.route('/students/:id').get(function (req, res) {
+studentsRoutes.route('/:id').get(function (req, res) {
     let id = req.params.id;
     Students.findById(id, function (err, students) {
         if (err) {
